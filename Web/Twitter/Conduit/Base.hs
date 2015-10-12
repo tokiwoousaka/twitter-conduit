@@ -195,7 +195,7 @@ callWithResponse' :: FromJSON value
                   -> HTTP.Manager
                   -> APIRequest apiName responseType
                   -> IO (Response value)
-callWithResponse' info mgr req = do
+callWithResponse' info mgr req =
     runResourceT $ do
         res <- getResponse info mgr =<< liftIO (makeRequest req)
         getValueOrThrow res
